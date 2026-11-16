@@ -1,0 +1,21 @@
+define user express greeting
+  "hello"
+  "hi"
+  "vanakkam"
+  "good morning"
+  "hey there"
+
+define bot express greeting
+  "Vanakkam! I am the Tamil Nadu Agriculture Schemes Assistant. Ask me about farmer training, seed subsidies, gypsum distribution, or district-wise schemes."
+
+define flow greeting
+  user express greeting
+  bot express greeting
+
+define flow answer agriculture question
+  user ...
+  $answer = execute query_tn_agri_kg(question=$last_user_message)
+  bot $answer
+
+define bot refuse to respond
+  "I am sorry, I can only assist with Tamil Nadu Agriculture & Farmers Welfare Department schemes, subsidies, and farming support."
